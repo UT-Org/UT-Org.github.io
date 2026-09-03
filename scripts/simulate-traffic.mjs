@@ -232,27 +232,39 @@ async function simulateVisitor(browser, options, runId, visitorIndex) {
       );
     }
 
+    // Make the simulator independent of the deployed site's normal batching
+    // policy. This affects only this isolated synthetic browser context.
+    await page.evaluate(() => {
+      window.posthog.set_config({ request_batching: false });
+      window.posthog.capture("simulation_session_started", {
+        synthetic_traffic: true,
+      });
+    });
+
     await exerciseScenario(page, scenario, visitorIndex, options.delay);
     await page.waitForTimeout(1_500);
     if (pageErrors.length > 0) {
       throw new Error("Browser error: " + pageErrors.join("; "));
     }
-    if (telemetryRequests === 0) {
-      throw new Error(
-        "PostHog SDK loaded, but no telemetry POST was observed. Check the " +
-          "project's ingestion settings and browser network policy.",
-      );
-    }
-    if (telemetryStatuses.some((status) => status >= 400)) {
-      throw new Error(
-        "PostHog rejected telemetry with HTTP status " +
-          telemetryStatuses.join(", "),
-      );
-    }
-    return { scenario, telemetryRequests };
   } finally {
+    // PostHog can flush its event queue while the page is closing. Measure
+    // telemetry only after closing this isolated visitor context.
     await context.close();
   }
+
+  if (telemetryRequests === 0) {
+    throw new Error(
+      "No PostHog telemetry POST was observed, including during page close. " +
+        "Check the project's ingestion settings and browser network policy.",
+    );
+  }
+  if (telemetryStatuses.some((status) => status >= 400)) {
+    throw new Error(
+      "PostHog rejected telemetry with HTTP status " +
+        telemetryStatuses.join(", "),
+    );
+  }
+  return { scenario, telemetryRequests };
 }
 
 async function main() {
