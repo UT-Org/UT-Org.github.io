@@ -1,10 +1,328 @@
-<head>
-    <script>
-        !function(t,e){var o,n,p,r;e.__SV||(window.posthog && window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="al ol ll init Il Rl Tl Ml Ol za El Dl Sl capture getExtension Pl nl Hl calculateEventProperties Bl register register_once register_for_session unregister unregister_for_session Vl Cl zl getFeatureFlag getFeatureFlagPayload getFeatureFlagResult getAllFeatureFlags isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey displaySurvey cancelPendingSurvey canRenderSurvey canRenderSurveyAsync Gl identify setPersonProperties unsetPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset Zl shutdown setIdentity clearIdentity get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException addExceptionStep captureLog startExceptionAutocapture stopExceptionAutocapture loadToolbar get_property getSessionProperty Ul ql createPersonProfile setInternalOrTestUser Wl ul hl opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_explicit_consent_status is_capturing clear_opt_in_out_capturing $l debug Ua Jn getPageViewId captureTraceFeedback captureTraceMetric bl".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-        posthog.init('phc_kiFgjofUSXjww4pvbsCmVk6cxfaVs7P43gHsdSdhdgr8', {
-            api_host: 'https://us.i.posthog.com',
-            defaults: '2026-05-30',
-            person_profiles: 'identified_only', // or 'always' to create profiles for anonymous users as well
-        })
-    </script>
-</head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Friendly one-on-one tutoring online and in person."
+    >
+    <title>ABC Tutoring &mdash; Find their way forward</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="assets/styles.css">
+
+    <!-- Load order: data -> analytics adapter -> application. -->
+    <script defer src="assets/js/data.js"></script>
+    <script defer src="assets/js/analytics.js"></script>
+    <script defer src="assets/js/app.js"></script>
+  </head>
+
+  <body>
+    <div class="announcement">
+      <span aria-hidden="true">&bull;</span>
+      Now booking fall sessions &mdash; online &amp; in person
+    </div>
+
+    <header>
+      <nav class="wrap" aria-label="Primary navigation">
+        <a class="brand" href="#" aria-label="ABC Tutoring home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M5 16.5c4.5 0 7-2.5 7-7 0 4.5 2.5 7 7 7-4.5 0-7 2.5-7 7 0-4.5-2.5-7-7-7Z"
+                fill="currentColor"
+              />
+              <circle cx="18" cy="5" r="2" fill="#f3d477" />
+            </svg>
+          </span>
+          ABC Tutoring
+        </a>
+
+        <div class="nav-links">
+          <a href="#tutors">Find a tutor</a>
+          <a href="#subjects">Subjects</a>
+          <a href="#how">How it works</a>
+          <a href="tel:+15125550184">(512) 555-0184</a>
+          <button class="btn primary" type="button" data-book>
+            Book a session &rarr;
+          </button>
+        </div>
+
+        <button
+          class="mobile-menu"
+          type="button"
+          aria-label="Start booking"
+          data-book
+        >
+          &#9776;
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">
+              <i aria-hidden="true"></i>
+              Personalized support, brighter futures
+            </div>
+            <h1>Find their way <em>forward.</em></h1>
+            <p class="hero-copy">
+              Friendly, one-on-one tutoring that meets your child where they
+              are&mdash;and helps them feel confident about where they're going.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#tutors">Find the right tutor &rarr;</a>
+              <a class="btn light" href="#how">See how it works</a>
+            </div>
+            <div class="trust">
+              <span><i class="check" aria-hidden="true">&check;</i>No account needed</span>
+              <span><i class="check" aria-hidden="true">&check;</i>Flexible online &amp; in-person</span>
+            </div>
+          </div>
+
+          <div class="hero-art">
+            <div class="blob blob-a" aria-hidden="true"></div>
+            <div class="blob blob-b" aria-hidden="true"></div>
+            <div
+              class="hero-photo"
+              role="img"
+              aria-label="Friendly ABC Tutoring tutor"
+            ></div>
+            <div class="float rating">
+              <div class="float-icon" aria-hidden="true">&starf;</div>
+              <div><strong>Trusted tutors</strong><small>Kind, skilled &amp; local</small></div>
+            </div>
+            <div class="float next">
+              <div class="float-icon" aria-hidden="true">&#9719;</div>
+              <div><strong>Next opening</strong><small>Today at 4:00 PM</small></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="subjects" id="subjects">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Support for every learner</div>
+            <h2>What can we help with?</h2>
+            <p>Choose a subject to meet tutors who make learning feel a little lighter.</p>
+          </div>
+
+          <div class="subject-grid">
+            <article class="subject-card math" data-subject="Math">
+              <div class="subject-icon" aria-hidden="true">x&sup2;</div>
+              <div><h3>Math</h3><p>Elementary through high school</p></div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </article>
+            <article class="subject-card science" data-subject="Science">
+              <div class="subject-icon" aria-hidden="true">&#9879;</div>
+              <div><h3>Science</h3><p>Biology, chemistry &amp; more</p></div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </article>
+            <article class="subject-card reading" data-subject="Reading">
+              <div class="subject-icon" aria-hidden="true">Aa</div>
+              <div><h3>Reading</h3><p>Fluency, comprehension &amp; writing</p></div>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="tutors" id="tutors">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="kicker">Meet the team</div>
+              <h2>Tutors who truly care</h2>
+            </div>
+            <p>
+              Experienced educators with different strengths, one shared goal:
+              helping your child have their &ldquo;I get it!&rdquo; moment.
+            </p>
+          </div>
+
+          <div class="filterbar" aria-label="Filter tutors">
+            <button class="filter active" type="button" data-filter="All">All tutors</button>
+            <button class="filter" type="button" data-filter="Math">Math</button>
+            <button class="filter" type="button" data-filter="Science">Science</button>
+            <button class="filter" type="button" data-filter="Reading">Reading</button>
+            <button class="filter" type="button" data-filter="Online">Online</button>
+          </div>
+
+          <!-- Tutor cards are rendered from assets/js/data.js. -->
+          <div class="tutor-grid" id="tutorGrid"></div>
+        </div>
+      </section>
+
+      <section class="how" id="how">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="kicker">Simple from the start</div>
+            <h2>Book in three easy steps</h2>
+            <p>No back-and-forth phone calls. Find a time that works and you're all set.</p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <h3>Choose a tutor</h3>
+              <p>Browse by subject, grade level, rate, and availability.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <h3>Pick a time</h3>
+              <p>Select an open one-hour session that fits your schedule.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <h3>Get confirmation</h3>
+              <p>Share a few details and we'll email your booking right away.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="wrap">
+          <div class="cta-inner">
+            <div>
+              <h2>Ready for an easier school week?</h2>
+              <p>The right support is just a few clicks away.</p>
+            </div>
+            <button class="btn" type="button" data-book>Find a tutor &rarr;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap footer-row">
+        <a class="brand" href="#">
+          <span class="brand-mark" aria-hidden="true">&starf;</span>ABC Tutoring
+        </a>
+        <div class="footer-links">
+          <a href="mailto:hello@abctutoring.com">Email us</a>
+          <a class="phone" href="tel:+15125550184">(512) 555-0184</a>
+        </div>
+        <span>&copy; 2026 ABC Tutoring</span>
+      </div>
+    </footer>
+
+    <div
+      class="modal"
+      id="bookingModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <h2 id="modalTitle">Book a session</h2>
+            <p id="modalSubtitle">Choose a time that works for you.</p>
+          </div>
+          <button class="close" id="closeBooking" type="button" aria-label="Close booking">
+            &times;
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="progress" aria-hidden="true">
+            <span class="on"></span>
+            <span id="progressDetails"></span>
+          </div>
+
+          <div id="stepAvailability">
+            <div class="booking-layout">
+              <div>
+                <h3>Choose a day</h3>
+                <div class="date-row" id="dateOptions"></div>
+                <h3 style="margin-top: 22px">Available times</h3>
+                <div class="times" id="timeOptions"></div>
+              </div>
+
+              <div>
+                <h3>Your session</h3>
+                <div class="summary-box">
+                  <div class="summary-tutor">
+                    <div class="mini-face p3" id="miniFace"></div>
+                    <div>
+                      <strong id="summaryName">Maya Chen</strong>
+                      <small id="summarySubject">Math &middot; Grades 6-12</small>
+                    </div>
+                  </div>
+                  <div class="summary-line"><span>Format</span><strong>60 minutes</strong></div>
+                  <div class="summary-line"><span>Location</span><strong>Online or in person</strong></div>
+                  <div class="summary-line"><span>Total</span><strong id="summaryRate">$55</strong></div>
+                </div>
+              </div>
+            </div>
+            <div class="booking-footer">
+              <small>You won't be charged yet.</small>
+              <button class="btn primary" id="continueBooking" type="button">Continue &rarr;</button>
+            </div>
+          </div>
+
+          <!-- PII stays in the form only; PostHog autocapture is disabled. -->
+          <form id="bookingForm" class="hidden" data-ph-no-capture>
+            <div class="form-grid">
+              <div class="field">
+                <label for="parentName">Parent's name</label>
+                <input id="parentName" name="parentName" required autocomplete="name" placeholder="Jordan Lee">
+              </div>
+              <div class="field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" required autocomplete="email" placeholder="jordan@example.com">
+              </div>
+              <div class="field">
+                <label for="student">Student's first name</label>
+                <input id="student" name="student" required placeholder="Sam">
+              </div>
+              <div class="field">
+                <label for="grade">Grade</label>
+                <select id="grade" name="grade" required>
+                  <option value="">Select grade</option>
+                  <option>K-2</option><option>3-5</option>
+                  <option>6-8</option><option>9-12</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="subjectSelect">Subject</label>
+                <select id="subjectSelect" name="subject" required>
+                  <option>Math</option><option>Science</option><option>Reading</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="sessionFormat">Session format</label>
+                <select id="sessionFormat" name="format" required>
+                  <option>Online</option><option>In person</option>
+                </select>
+              </div>
+            </div>
+            <div class="booking-footer">
+              <button class="btn light" id="backBooking" type="button">&larr; Back</button>
+              <button class="btn primary" type="submit">Confirm booking</button>
+            </div>
+          </form>
+
+          <div class="success hidden" id="bookingSuccess">
+            <div class="success-icon" aria-hidden="true">&check;</div>
+            <h2>You're all set!</h2>
+            <p>
+              We've reserved your session and sent a confirmation to your email.
+              Your tutor will be in touch soon.
+            </p>
+            <button class="btn primary" id="finishBooking" type="button">Done</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

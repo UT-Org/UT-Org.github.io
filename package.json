@@ -1,0 +1,13 @@
+{
+  "name": "abc-tutoring-prototype",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static tutoring website prototype and synthetic traffic demo",
+  "scripts": {
+    "simulate:traffic": "node scripts/simulate-traffic.mjs",
+    "install:browser": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}
