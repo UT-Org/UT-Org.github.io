@@ -32,6 +32,13 @@
     api_host: host,
     defaults: "2026-05-30",
     person_profiles: "identified_only",
+    autocapture: false,
+    capture_pageview: false,
+    capture_pageleave: true,
+    disable_session_recording: true,
+    mask_all_text: true,
+    mask_all_element_attributes: true,
+    request_batching: false,
     capture_exceptions: {
       capture_unhandled_errors: true,
       capture_unhandled_rejections: true,
@@ -44,6 +51,8 @@
         synthetic_traffic: isSyntheticTraffic,
         ...(simulationRunId && { simulation_run_id: simulationRunId }),
       });
+      posthog.capture("$pageview");
+      window.__ABC_POSTHOG_READY__ = true;
     },
   });
 

@@ -218,9 +218,11 @@ async function simulateVisitor(browser, options, runId, visitorIndex) {
 
     try {
       await page.waitForFunction(
-        () => window.posthog?.__loaded === true,
+        () =>
+          window.__ABC_POSTHOG_READY__ === true ||
+          Boolean(window.posthog?.config?.token),
         undefined,
-        { timeout: 15_000 },
+        { timeout: 30_000 },
       );
     } catch {
       const detail = posthogFailures.length

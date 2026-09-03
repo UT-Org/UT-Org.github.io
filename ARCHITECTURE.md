@@ -6,6 +6,7 @@ This is a dependency-free static prototype intended for GitHub Pages.
 
 - `index.html` — semantic page structure and booking form markup.
 - `assets/styles.css` — design tokens, component styles, and responsive rules.
+- `assets/js/config.js` — public static-site runtime configuration.
 - `assets/js/data.js` — prototype tutor and availability data.
 - `assets/js/analytics.js` — PostHog initialization and the telemetry adapter.
 - `assets/js/app.js` — rendering, event handling, booking flow, and UI state.
