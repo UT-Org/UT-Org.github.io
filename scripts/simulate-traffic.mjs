@@ -237,7 +237,10 @@ async function simulateVisitor(browser, options, runId, visitorIndex) {
     // Make the simulator independent of the deployed site's normal batching
     // policy. This affects only this isolated synthetic browser context.
     await page.evaluate(() => {
-      window.posthog.set_config({ request_batching: false });
+      window.posthog.set_config({
+        request_batching: false,
+        opt_out_useragent_filter: true,
+      });
       window.posthog.capture("simulation_session_started", {
         synthetic_traffic: true,
       });

@@ -72,6 +72,10 @@ The simulator disables request batching only inside its isolated synthetic
 browser sessions, ensuring that its delivery check does not depend on the
 deployed site's normal batching configuration.
 
+PostHog normally filters likely bots, including Playwright. The simulation URL
+explicitly opts these isolated sessions out of that user-agent filter while
+normal website visitors retain PostHog's bot filtering.
+
 If the SDK or ingestion request is blocked, the simulator exits with a diagnostic
 error instead of reporting a successful run with zero PostHog requests. Common
 causes are DNS filtering, firewalls, and browser privacy or ad-blocking rules for

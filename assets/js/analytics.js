@@ -39,6 +39,9 @@
     mask_all_text: true,
     mask_all_element_attributes: true,
     request_batching: false,
+    // Playwright is intentionally recognized as a bot by PostHog. Permit it
+    // only for explicitly labeled simulator URLs; keep filtering for real use.
+    opt_out_useragent_filter: isSyntheticTraffic,
     capture_exceptions: {
       capture_unhandled_errors: true,
       capture_unhandled_rejections: true,
