@@ -174,11 +174,28 @@ async function simulateVisitor(browser, options, runId, visitorIndex) {
   });
   const page = await context.newPage();
   let telemetryRequests = 0;
+  const telemetryStatuses = [];
+  const posthogFailures = [];
   const pageErrors = [];
 
   page.on("request", (request) => {
     if (request.method() === "POST" && request.url().includes("posthog.com")) {
       telemetryRequests += 1;
+    }
+  });
+  page.on("response", (response) => {
+    if (
+      response.request().method() === "POST" &&
+      response.url().includes("posthog.com")
+    ) {
+      telemetryStatuses.push(response.status());
+    }
+  });
+  page.on("requestfailed", (request) => {
+    if (request.url().includes("posthog.com")) {
+      posthogFailures.push(
+        request.url() + ": " + (request.failure()?.errorText || "request failed"),
+      );
     }
   });
   page.on("pageerror", (error) => pageErrors.push(error.message));
@@ -199,10 +216,38 @@ async function simulateVisitor(browser, options, runId, visitorIndex) {
       );
     }
 
+    try {
+      await page.waitForFunction(
+        () => window.posthog?.__loaded === true,
+        undefined,
+        { timeout: 15_000 },
+      );
+    } catch {
+      const detail = posthogFailures.length
+        ? posthogFailures.join("; ")
+        : "No failed PostHog request was reported by the browser";
+      throw new Error(
+        "PostHog SDK did not finish loading. Check DNS, firewall, privacy " +
+          "extensions, or ad-blocking settings. " + detail,
+      );
+    }
+
     await exerciseScenario(page, scenario, visitorIndex, options.delay);
-    await page.waitForTimeout(900);
+    await page.waitForTimeout(1_500);
     if (pageErrors.length > 0) {
       throw new Error("Browser error: " + pageErrors.join("; "));
+    }
+    if (telemetryRequests === 0) {
+      throw new Error(
+        "PostHog SDK loaded, but no telemetry POST was observed. Check the " +
+          "project's ingestion settings and browser network policy.",
+      );
+    }
+    if (telemetryStatuses.some((status) => status >= 400)) {
+      throw new Error(
+        "PostHog rejected telemetry with HTTP status " +
+          telemetryStatuses.join(", "),
+      );
     }
     return { scenario, telemetryRequests };
   } finally {

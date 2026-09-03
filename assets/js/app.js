@@ -44,7 +44,6 @@
 
   function getBookingContext() {
     return {
-      tutor: state.selectedTutor.name,
       tutor_id: state.selectedTutor.id,
       subject: state.selectedTutor.subject,
       rate: state.selectedTutor.rate,
@@ -218,7 +217,6 @@
     }
 
     track("tutor_profile_viewed", {
-      tutor: tutor.name,
       tutor_id: tutor.id,
       subject: tutor.subject,
     });

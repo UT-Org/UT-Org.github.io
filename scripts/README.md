@@ -67,3 +67,8 @@ Use these event-property filters in PostHog:
 
 The script prints how many PostHog POST requests it observed. Events can take a
 short time to become visible in PostHog.
+
+If the SDK or ingestion request is blocked, the simulator exits with a diagnostic
+error instead of reporting a successful run with zero PostHog requests. Common
+causes are DNS filtering, firewalls, and browser privacy or ad-blocking rules for
+PostHog domains.

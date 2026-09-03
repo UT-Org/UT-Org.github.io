@@ -17,7 +17,7 @@
     >
     <link rel="stylesheet" href="assets/styles.css">
 
-    <!-- Load order: data -> analytics adapter -> application. -->
+    <!-- Load order: deployment config -> data -> analytics adapter -> application. -->
     <script defer src="assets/js/data.js"></script>
     <script defer src="assets/js/analytics.js"></script>
     <script defer src="assets/js/app.js"></script>
@@ -270,7 +270,7 @@
             </div>
           </div>
 
-          <!-- PII stays in the form only; PostHog autocapture is disabled. -->
+          <!-- PII stays in the form only and is excluded from PostHog autocapture. -->
           <form id="bookingForm" class="hidden" data-ph-no-capture>
             <div class="form-grid">
               <div class="field">
